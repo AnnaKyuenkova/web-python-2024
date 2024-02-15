@@ -1,5 +1,5 @@
 while True:
-    str = input("Введите строку, содержащую некоторую последовательность символов: ")
+    str = input()
     if len(str) > 0 or len(str) <= 1000:
         print(str.swapcase())
     else:

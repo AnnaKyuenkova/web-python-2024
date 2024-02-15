@@ -1,5 +1,5 @@
 while True:
-    n = int(input("Введите число: "))
+    n = int(input())
     if (n < 1) or (n > 100):
         print ("ERROR: число выходит за пределы диапазона")
     elif (n % 2 != 0):

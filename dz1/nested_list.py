@@ -1,11 +1,11 @@
-n = int(input("Введите количество учеников: "))
+n = int(input())
 records = []
 if n < 2 or n > 5:
     print("ERROR: количество учеников должно быть не меньше 2 и не больше 5")
 else:
     for i in range(n):
-        name = input("Введите имя учащегося: ")
-        grade = float(input("Введите оценку: "))
+        name = input()
+        grade = float(input())
         records.append([name, grade])
     # сортировка списка по второму элементу 
     # (1, потому что нумерация с 0, то есть первый элемент под номером 0, второй - 1)

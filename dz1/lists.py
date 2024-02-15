@@ -1,4 +1,4 @@
-n = int(input("Введите количество команд: "))
+n = int(input())
 arr = []
 for i in range(n):
     command = input().split()

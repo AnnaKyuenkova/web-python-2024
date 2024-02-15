@@ -1,5 +1,5 @@
 while True:
-    str = input("Введите строку: ")
+    str = input()
     splitStr = str.split()
     splitAndJoin = splitStr[0]
     splitStr.pop(0)

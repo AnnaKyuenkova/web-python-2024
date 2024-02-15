@@ -1,8 +1,8 @@
 while True:
-    n = int(input("Введите количество учеников: "))
+    n = int(input())
     numbers = []
     for i in range(n):
-        num = int(input("Введите число: "))
+        num = int(input())
         numbers.append(num)
     if len(numbers) < 2:
         print("ERROR: должно быть введено минимум два числа")
@@ -15,4 +15,4 @@ while True:
             max1 = numbers[i]
         elif numbers[i] > max2 and numbers[i] != max1:
             max2 = numbers[i]
-    print("Второе место: ", max2)
+    print(max2)
