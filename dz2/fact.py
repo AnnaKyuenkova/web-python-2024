@@ -1,25 +1,31 @@
 import time
-# рекурсивная функция
+
 def fact_rec(n):
-    if n == 0:
+    if n < 1 or n > 10**5:
+        print("error")
+        return
+    if n == 1:
         return 1
-    return n * fact_rec(n-1)
-# итерационная функция
+    else:
+        return n * fact_rec(n-1)
+
 def fact_it(n):
+    if n < 1 or n > 10**5:
+        print("error")
+        return
     result = 1
     for i in range(1, n+1):
         result *= i
     return result
 
 if __name__ == '__main__':
-    n = int(input("Введите целое положительное число n: "))
+    n = int(input())
     start_time = time.time()
-    result_rec = fact_rec(n)
-    end_time = time.time()
-    print(f"Факториал числа {n} (рекурсивно): {result_rec}")
-    print(f"Время выполнения (рекурсивно): {end_time - start_time} секунд")
+    print(f"Рекурсивная функция: {fact_rec(n)}")
+    print(f"Время выполнения рекурсивной функции: {time.time() - start_time} секунд")
+
     start_time = time.time()
-    result_it = fact_it(n)
-    end_time = time.time()
-    print(f"Факториал числа {n} (итерационно): {result_it}")
-    print(f"Время выполнения (итерационно): {end_time - start_time} секунд")
+    print(f"Итерационная функция: {fact_it(n)}")
+    print(f"Время выполнения итерационной функции: {time.time() - start_time} секунд")
+
+# итерационная выполняется быстрее
