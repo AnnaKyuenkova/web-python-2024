@@ -68,9 +68,9 @@ def login():
             if login == user['login'] and password == user['password']:
                 login_user(User(user['id'], user['login']), remember=check)
                 param_url = request.args.get('next')
-                flash('Вы успешно вошли', 'success')
+                flash('Вы успешно вошли!!!', 'success')
                 return redirect(param_url or url_for('index'))
-    flash('Вы не успешно вошли', 'danger')
+    flash('Ошибка входа!!! Попробуйте ещё раз.', 'danger')
     return render_template('login.html' )
 
 @app.route('/logout', methods = ['GET'])
