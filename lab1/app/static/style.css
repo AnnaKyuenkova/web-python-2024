@@ -5,3 +5,7 @@ body {
 .avatar {
     max-width: 100%;
 }
+
+.reply-block {
+    margin-left: 25px;
+}

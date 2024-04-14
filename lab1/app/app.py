@@ -50,11 +50,3 @@ def post(index):
 @app.route('/about')
 def about():
     return render_template('about.html', title='Об авторе')
-
-@app.route('/posts/<int:post_index>/add_comment', methods=['POST'])
-def add_comment(post_index):
-    comment_text = request.form.get('comment_text')
-    comments = posts_list[post_index]['comments']
-    new_comment = {'author': fake.name(), 'text': comment_text, 'replies': []}
-    comments.append(new_comment)
-    return redirect(url_for('post', index=post_index))

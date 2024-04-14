@@ -3,40 +3,40 @@
 {% block content %}
     <div class="w-75 mx-auto mt-3">
         <h1 class="text-center">{{ post.title }}</h1>
-        <p class="my-3">{{ post.author }}, {{ post.date }}</p>
-        <img src="{{ url_for('static', filename='images/' + post.image_id) }}" alt="Card image cap" class="mw-100 my-3">
-        <p class="my-3 text-wrap text-break">{{ post.text }}</p>
-        <div class="modal-content flex-column">
-            <div class="modal-header">
-                <h5 class="my-0">Оставьте комментарий</h5>
+        <p class="my-4">{{ post.author }}</p>
+        <p class="my-2">{{ post.date }}</p>
+        <img src="{{ url_for('static', filename='images/' + post.image_id) }}" alt="Post image" class="mw-100 my-3">
+        <p class="my-4 text-wrap text-break">{{ post.text }}</p>
+        <div class="modal-content flex-column my-3">
+            <div class="header">
+                <h5 class="my-2 text-center">Оставьте комментарий</h5>
             </div>
-            <div class="modal-body">
+            <div class="body">
                 <form>
-                    <textarea name="comments" id="comment" cols="100" rows="3" class="mw-100 my-0"></textarea>
+                    <textarea name="comments" id="comment" style= "width: 100%" class="mw-100 my-0"></textarea>
                 </form>
             </div>
-            <div class="modal-footer mt-0">
-                <button type="button" class="btn btn-primary my-0">Отправить</button>
+            <div class="footer my-2 text-center">
+                <button type="button" class="btn btn-dark my-0">Отправить</button>
             </div>
         </div>
         {% for comment in post.comments %}
             <div class="comment-block">
-                <img src="{{url_for('static', filename='images/' + 'avatarcoms.jpg')}}" class="avatarcoms" alt="avatarcoms">
-                <!-- <p class="comtext"><strong>{{ comment.author }}:</strong> {{ comment.text }}</p> -->
+                <img src="{{url_for('static', filename='images/' + 'avatar.jpg')}}" style="width: 50px; height: 50px" class="pic" alt="pic">
                 <div>
-                    <p class="comtext"><strong>{{ comment.author }}</strong></p>
-                    <p class="comtext">{{ comment.text }}</p>
+                    <p class="comment"><strong>{{ comment.author }}</strong></p>
+                    <p class="comment">{{ comment.text }}</p>
                 </div>
-                
                 
                 {% if comment.replies %}
                     <div class="reply-block">
                         {% for reply in comment.replies %}
-                            <img src="{{url_for('static', filename='images/' + 'avatarcoms.jpg')}}" class="avatarcoms" alt="avatarcoms">
-                            <!-- <p class="comtext"><strong>{{ reply.author }}:</strong> {{ reply.text }}</p> -->
+                            <img src="{{url_for('static', filename='images/' + 'girl.jpg')}}" style="width: 40px; height: 40px" class="pic" alt="pic">
+                            <p class="comment"><strong>{{ reply.author }}:</strong> {{ reply.text }}</p>
                             <div>
-                                <p class="comtext"><strong>{{ comment.author }}</strong></p>
-                                <p class="comtext">{{ comment.text }}</p>
+                                <img src="{{url_for('static', filename='images/' + 'boy.jpg')}}" style="width: 40px; height: 40px" class="pic" alt="pic">
+                                <p class="comment"><strong>{{ comment.author }}</strong></p>
+                                <p class="comment">{{ comment.text }}</p>
                             </div>
                         {% endfor %}
                     </div>
