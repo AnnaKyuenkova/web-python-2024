@@ -53,17 +53,20 @@ def phone():
         phone_number = request.form['phone_number']
         error = None
 
-        # Проверка на длину номера
         phone_number_digits = ''.join(filter(str.isdigit, phone_number))
-        if (phone_number.startswith('+7') or phone_number.startswith('8')) and len(phone_number_digits) != 11:
+
+        # проверка на длину номера
+        if phone_number.startswith('+7'):
+            phone_number_digits = phone_number_digits[1:]  # удаляем +7 из начала номера
+        elif phone_number.startswith('7'):
+            phone_number_digits = phone_number_digits[1:]  # удаляем 7 из начала номера
+        elif phone_number.startswith('8'):
+            phone_number_digits = phone_number_digits[1:]  # удаляем 8 из начала номера
+
+        if len(phone_number_digits) != 10:
             error = 'Недопустимый ввод. Неверное количество цифр.'
 
-        if phone_number.startswith('+7'):
-            phone_number_digits = phone_number_digits[1:]  # Удаляем +7 из начала номера
-        elif phone_number.startswith('8'):
-            phone_number_digits = phone_number_digits[1:]  # Удаляем 8 из начала номера
-
-        # Проверка на недопустимые символы
+        # проверка на недопустимые символы
         allowed_chars = set('0123456789 +()-.')
         if not all(char in allowed_chars for char in phone_number):
             error = 'Недопустимый ввод. В номере телефона встречаются недопустимые символы.'
