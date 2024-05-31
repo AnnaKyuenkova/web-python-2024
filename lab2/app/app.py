@@ -55,7 +55,6 @@ def phone():
 
         phone_number_digits = ''.join(filter(str.isdigit, phone_number))
 
-        # проверка на длину номера
         if phone_number.startswith('+7'):
             phone_number_digits = phone_number_digits[1:]  # удаляем +7 из начала номера
         elif phone_number.startswith('7'):
@@ -66,7 +65,6 @@ def phone():
         if len(phone_number_digits) != 10:
             error = 'Недопустимый ввод. Неверное количество цифр.'
 
-        # проверка на недопустимые символы
         allowed_chars = set('0123456789 +()-.')
         if not all(char in allowed_chars for char in phone_number):
             error = 'Недопустимый ввод. В номере телефона встречаются недопустимые символы.'
@@ -76,6 +74,5 @@ def phone():
         elif len(phone_number_digits) == 10:
             formatted_number = '8-{}-{}-{}-{}'.format(phone_number_digits[:3], phone_number_digits[3:6], phone_number_digits[6:8], phone_number_digits[8:])
             return render_template('phone.html', success=True, formatted_number=formatted_number)
-
 
     return render_template('phone.html')

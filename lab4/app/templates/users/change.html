@@ -1,0 +1,19 @@
+{% extends "base.html" %} {% block content %}
+<div class="container">
+    <form method="POST">
+        <div class="my-3">
+            <label for="oldPas" class="form-label">Старый пароль</label>
+            <input name="oldpas" type="password" class="form-control" id="oldPas" required>
+        </div>
+        <div class="mb-3">
+            <label for="newPas" class="form-label">Новый пароль</label>
+            <input name="newpas" type="password" class="form-control" id="newPas" required>
+        </div>
+        <div class="mb-3">
+            <label for="new2Pas" class="form-label">Повторите пароль</label>
+            <input name="new2pas" type="password" class="form-control" id="new2Pas" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+    </form>
+</div>
+{% endblock %}
