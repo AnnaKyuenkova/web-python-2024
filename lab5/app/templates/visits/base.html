@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container my-3">
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <a class="text-black nav-link {% if request.endpoint == 'visit.show'%} active {%endif%}" href="{{url_for('visit.show')}}">Журнал посещений</a>
+    </li>
+    {% if current_user.is_admin() %}
+    <li class="nav-item" role="presentation">
+      <a class="text-black nav-link {% if request.endpoint == 'visit.show_route' %} active {%endif%}" href="{{url_for('visit.show_route')}}">По страницам</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="text-black nav-link {% if request.endpoint == 'visit.show_user' %} active {%endif%}" href="{{url_for('visit.show_user')}}">По пользователям</a>
+    </li>
+    {% endif %}
+  </ul>
+</div>
+{% block tabs %}
+Нет информации
+{% endblock %}
+
+{% endblock %}

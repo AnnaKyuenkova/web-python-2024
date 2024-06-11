@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container my-3">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Логин</th>
+                <th scope="col">Фамилия</th>
+                <th scope="col">Имя</th>
+                <th scope="col">Отчество</th>
+                <th scope="col">Роль</th>
+                <th scope="col">Действия</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for user in users | sort(attribute='id') %}
+              <tr>
+                <th scope="row">{{user.login}}</th>
+                <td>{{user.last_name}}</td>
+                <td>{{user.first_name}}</td>
+                <td>
+                  {% if user.middle_name %}
+                    {{user.middle_name}}
+                  {% else %}
+                    <p style="color: rgb(143, 143, 143);">(не указано)</p>
+                  {% endif %}
+                </td>
+                <td>{{user.role_name}}</td>
+                <td>
+                  {% if current_user.can('show',user) %}
+                    <a class="btn btn-dark" href="{{url_for('show_user', user_id=user.id)}}">Просмотр</a>
+                  {% endif %}
+                  {% if current_user.can('edit',user) %}
+                    <a class="btn btn-dark" href="{{url_for('edit', user_id=user.id)}}">Редактирование</a>
+                  {% endif %}
+                  {% if current_user.can('delete',user) %}
+                    <a class="btn btn-danger" href="{{url_for('delete', user_id=user.id)}}">Удаление</a>
+                  {% endif %}
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+    </div>
+{% endblock %}

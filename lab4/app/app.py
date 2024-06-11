@@ -305,7 +305,7 @@ def create():
             flash(f'При создании пользователя произошла ошибка.', 'danger')
             return render_template('users/create.html', roles=roles)
         
-    return render_template('users/create.html')
+    return render_template('users/create.html', roles=roles)
 
 @app.route('/users/edit/<int:user_id>', methods=["POST", "GET"])
 def edit(user_id):

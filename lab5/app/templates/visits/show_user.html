@@ -1,0 +1,27 @@
+{% extends 'visits/base.html' %}
+{% from '/pagination.html' import pagination %}
+
+{% block tabs %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">№</th>
+        <th scope="col">Пользователь</th>
+        <th scope="col">Кол-во посещений</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for val in values %}
+      <tr>
+        <td>{{ val.id }}</td>
+        <td>{{ val.fio }}</td>
+        <td>{{ val.cnt }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {{pagination(count, page)}}
+  <div class="col text-center my-3">
+    <a class="btn btn-secondary" href="{{url_for('visit.send_csv_users')}}?journal=show_user">Экспорт в CSV</a>
+  </div>
+{% endblock %}
