@@ -12,11 +12,11 @@
     </thead>
     <tbody>
       {% for val in values %}
-      <tr>
-        <td>{{ val.id }}</td>
-        <td>{{ val.fio }}</td>
-        <td>{{ val.cnt }}</td>
-      </tr>
+        <tr>
+          <td>{{ loop.index }}</td>
+          <td>{{ val.fio }}</td>
+          <td>{{ val.cnt }}</td>
+        </tr>
       {% endfor %}
     </tbody>
   </table>

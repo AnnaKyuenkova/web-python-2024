@@ -13,7 +13,7 @@
       <tbody>
         {% for val in values %}
         <tr>
-          <td>{{ val.id }}</td>
+          <td>{{ loop.index }}</td>
           <td>{{ val.path }}</td>
           <td>{{ val.count_path }}</td>
         </tr>

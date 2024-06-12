@@ -17,3 +17,10 @@ class CheckUser:
         return current_user.is_admin()
     def show_route(self):
         return current_user.is_admin()
+    
+    def send_csv_journal(self):
+        return True
+    def send_csv_pages(self):
+        return current_user.is_admin()
+    def send_csv_users(self):
+        return current_user.is_admin()
